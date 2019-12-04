@@ -4,16 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>组件的定义与使用</title>
 </head>
 <body>
+
+
+  <!-- 页面里的ROOT--就是VM,不一定是一个 -->
   
   <div id="components-demo">
+    <!-- 定义了组件,可以写多个组件标签,复用,自己管自己的,各个组件对象每个人的data都是独立的,所以 data是函数 -->
     <button-counter></button-counter>
     <button-counter></button-counter>
     <button-counter></button-counter>
 
     <hr>
+    <!-- <blog-post title = '我的 Vue 旅程222'></blog-post>
+    <blog-post title = '用 Vue 写博客222'></blog-post>
+    <blog-post title = 'Vue 如此有趣222'></blog-post> -->
+    
+    
+    <!-- 动态产生 -->
     <blog-post
       v-for="post in posts"
       :key="post.id"
@@ -23,19 +33,25 @@
   
   <script src="./js/vue.js"></script>
   <script>
+
+
+//  Vue.component(  组件名(字符串类型),  {配置对像})
+
+
     // 定义一个新的组件，名称为 button-counter
     Vue.component('button-counter', {//配置对象
-      data () { // 组件的data配置必须是返回对象的函数
+      data () { // 组件的data配置必须是返回对象的函数--如果是对象的话,可能会与组件的实例产生干扰(保证组件的data都是一个独立的函数)
         return {
-          count: 0
+          count: 0//属性  数值为0
         }
       },
+      // 模板--读组件里面的数据--绑定监听
       template: '<button @click="count++">你点击了 {{ count }} 次。</button>'
     })
 
-    Vue.component('blog-post', {
+    Vue.component('blog-post', {//文章
       props: ['title'], // 声明接收属性
-      template: '<h3>{{ title }} <button-counter/> </h3>'
+      template: '<h3>{{ title }} <button-counter/> </h3>'//组件的模板页面--组件嵌套
     })
 
     new Vue({ 
