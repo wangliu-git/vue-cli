@@ -1,2 +1,2 @@
-console.log('Hello Webpack!')
-document.getElementById('root').innerHTML = '<h1>Hello222</h1>'
+console.log('Helo Webpack!')
+document.getElementById('root').innerHTML = '<h1>Hello2</h1>'
