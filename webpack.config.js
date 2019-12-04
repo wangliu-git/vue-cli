@@ -13,6 +13,7 @@ module.exports = {
     app: path.resolve(__dirname,"src/index.js")
   },
 
+
   //出口(打包生产JS)--必须是对象
   output : {
 
@@ -23,15 +24,46 @@ module.exports = {
 
   //模块加载器
   module : {
-    //loder的配置规则
-    rules : [
+        //loder的配置规则
+        rules : [
+          //配置JS
+          {
+            test: /\.js$/,//匹配文件
+            exclude: /node_modules/,//排除文件\
+            include:[path.resolve(__dirname,'src')],//只针对哪些处理--写绝对路径--用path解析
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: ['@babel/preset-env']//预设包--包含多个常用插件的工具
+              }
+            }
+          },
 
+          // 配置CSS
+          {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader'],//从右向左执行的
+          },
+
+          //处理图片
+            {
+          
+            test: /\.(png|jpg|gif)$/i,
+            use: [
+              {
+                loader: 'url-loader',
+                options: {
+                  limit: 8192,
+                  name: 'static/img/[name].[hash:7].[ext]' // 相对于output.path
+                }
+              }
+            ]
+      } 
     ]
-  },
-
-
+    },
   //插件--打包HTML  目的是自动引入打包生产的JS
-  plugins : [//可以配多个插件
+  plugins:[
+    //可以配多个插件
     new HtmlWebpackPlugin({//配置的插件是每一个构造函数的实例,创建实例的时候需要指定一个配置选项的对象
       template: 'index.html',//将哪个页面作为模板页面打包
       filename: 'index.html',//生成的页面(在Output指定的path下)

@@ -95,7 +95,7 @@ CommonJS:module.export  /exports  ///require  引入
 
 ## 4. 打包处理 ES6/CSS/图片
     1). 处理ES6
-        a. 下载依赖包
+        a. 下载依赖包                       核心          预设
             yarn add -D babel-loader @babel/core @babel/preset-env
         b. 配置
             {
@@ -121,6 +121,7 @@ CommonJS:module.export  /exports  ///require  引入
 
     3). 处理图片
         a. 下载依赖包
+       
             yarn add -D url-loader@2.3.0 file-loader@4.3.0
         b. 配置
             {
