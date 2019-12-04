@@ -2,7 +2,7 @@
     1). 生成package.json
         yarn init -y
 
-    2). 创建入口js: src/index
+    2). 创建入口js: src/index-----入口:xxx:index.js的路径
         console.log('Hello Webpack!')
         document.getElementById('root').innerHTML = '<h1>Hello222</h1>'
 
@@ -11,32 +11,51 @@
 
 
 ## 2. webpack基本使用
+
+
+webpack是遵循CommonJS
+ES6:export  default / import
+CommonJS:module.export  /exports  ///require  引入
+
+
     1). 下载依赖包
         yarn add -D webpack webpack-cli
         yarn add -D html-webpack-plugin
       
-    2). 创建webpack配置: webpack.config.js
-        const path = require('path')
+    2). 创建webpack配置: webpack.config.js--放在根目录
+        
+        const path = require('path')---path模块-解析路径信息的模块
         const HtmlWebpackPlugin = require('html-webpack-plugin')
 
         module.exports = {
           // 模式: 生产环境
           mode: 'production',
+          
+          
+          
           // 入口
           entry: {
             app: path.resolve(__dirname, 'src/index.js')
           },
+          
+          
+          
           // 出口(打包生成js)
           output: {
             filename: 'static/js/[name].bundle.js',
             path: path.resolve(__dirname, 'dist')
           },
+          
+          
+          
           // 模块加载器
           module: {
             rules: [
 
             ]
           },
+          
+          
           // 插件
           plugins: [
             new HtmlWebpackPlugin({
