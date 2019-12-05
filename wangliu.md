@@ -1,3 +1,10 @@
+组件--实现所有功能界面代码模块的集合
+
+定义组件
+---vue.component--模板没有提示
+---.vue
+
+
 https://github.com/zxfjd3g/190719_VueComponent.git
 
 配置 "scripts": {

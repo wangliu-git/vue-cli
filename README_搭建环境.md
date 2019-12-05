@@ -19,7 +19,10 @@ CommonJS:module.export  /exports  ///require  引入
 
 
     1). 下载依赖包
+
         yarn add -D webpack webpack-cli
+
+                    处理页面 自动引入打包文件的js/css
         yarn add -D html-webpack-plugin
       
     2). 创建webpack配置: webpack.config.js--放在根目录
@@ -75,8 +78,9 @@ CommonJS:module.export  /exports  ///require  引入
         每次修改项目代码后, 必须重新打包, 重新运行
     
     2). 下载依赖包
+
         yarn add -D webpack-dev-server
-        修改代码后自动更新
+        自动启动服务器,修改代码后自动打包刷新浏览器
     
     3). 配置开发服务器
         devServer: {
@@ -148,7 +152,55 @@ CommonJS:module.export  /exports  ///require  引入
             document.body.appendChild(image)
             document.getElementById('root').innerHTML = '<h1>Hello222</h1>'
 
-## 5. 搭建vue的环境
+
+
+
+
+# 自定义Vue开发环境
+## 1. 搭建基本开发环境
+    1). 下载依赖包
+        yarn add -D webpack webpack-cli
+        yarn add -D html-webpack-plugin
+        yarn add -D webpack-dev-server
+        yarn add -D babel-loader @babel/core @babel/preset-env
+        yarn add -D css-loader style-loader
+        yarn add -D url-loader@2.3.0 file-loader@4.3.0
+    
+    2). webpack的基本配置: webpack.config.js
+        module.exports = {
+          mode: 'production|development'
+          entry: {
+
+          },
+          output: {
+
+          },
+          module: {
+            rules: [
+
+            ]
+          },
+          plugins: [
+
+          ],
+          devServer: {
+
+          },
+          devtool: ''
+        }
+
+    3). 区分使用生产环境与开发环境
+        使用生产环境:
+            npm run build   ==> webpack
+            1). 在内存中进行编译打包, 生成内存中的打包文件
+            2). 保存到本地(在本地生成打包文件)   ===> 此时还不能通过浏览器来访问, 需要启动服务器运行
+        使用开发环境
+            npm run dev   ==> webpack-dev-server
+            1). 在内存中进行编译打包, 生成内存中的打包文件
+            2). 启动服务器, 运行内存中的打包文件   ===> 可以通过浏览器虚拟路径访问
+
+
+## 2. 搭建vue的环境
     0). 文档:
         https://vue-loader.vuejs.org/zh/
 
@@ -183,19 +235,3 @@ CommonJS:module.export  /exports  ///require  引入
     3). 编码: 
         src/App.vue
         src/index.js
-
-##  区分使用生产环境与开发环境
-  使用生产环境:
-    npm run build ==>  webpack
-
-    1). 在内存中进行编译打包,生产内存中的打包文件
-    2). 保存到本地(在本地(硬盘)打包文件)  ==>  不能通过浏览器访问    需要手动启动服务器运行
-
-  使用开发环境:
-  npm run dev ==> webpack-dev-server
-
-   1). 在内存中进行编译打包,生产内存中的打包文件
-   2). 启动服务器,运行内存中的打包文件, ===>  可以通过浏览器虚拟路径访问
-
-
-    

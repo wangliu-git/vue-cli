@@ -8,7 +8,7 @@
 
 // js代码块
 <script>
-export default {
+export default {//默认暴露配置对象
   data:function() {
     return {
       hello:"hi"

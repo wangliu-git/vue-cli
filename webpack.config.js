@@ -1,4 +1,5 @@
 const path = require('path')//node模块,去解析路径信息
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')//HtmlWebpackPlugin是一个构造函数
 
 module.exports = {
@@ -25,8 +26,9 @@ module.exports = {
   //模块加载器
   module : {
         //loder的配置规则
-        rules : [
-          //配置JS
+      rules : [
+          
+        //配置JS
           {
             test: /\.js$/,//匹配文件
             exclude: /node_modules/,//排除文件\
@@ -46,8 +48,7 @@ module.exports = {
           },
 
           //处理图片
-            {
-          
+          {
             test: /\.(png|jpg|gif)$/i,
             use: [
               {
@@ -58,8 +59,17 @@ module.exports = {
                 }
               }
             ]
-      } 
-    ]
+          } ,
+
+      
+          // 配置VUE
+          {
+            test: /\.vue$/,
+            include: path.resolve(__dirname, 'src'),
+            loader: 'vue-loader'
+          }
+          
+        ]
     },
   //插件--打包HTML  目的是自动引入打包生产的JS
   plugins:[
@@ -67,7 +77,9 @@ module.exports = {
     new HtmlWebpackPlugin({//配置的插件是每一个构造函数的实例,创建实例的时候需要指定一个配置选项的对象
       template: 'index.html',//将哪个页面作为模板页面打包
       filename: 'index.html',//生成的页面(在Output指定的path下)
-    })
+    }),
+
+    new VueLoaderPlugin()
   ],
 
   //配置开发服务器
@@ -76,6 +88,15 @@ module.exports = {
     quiet: true, // 不做太多日志输出
   },
 
+  // 引入模块的解析
+  resolve: {
+    extensions: ['.js', '.vue', '.json'], // 可以省略的后缀名
+    alias: { // 路径别名(简写方式)
+      'vue$': 'vue/dist/vue.esm.js',  // 表示精准匹配
+    }
+  },
+
 //配置开启source-map调试---出了问题会知道是哪个
   devtool: 'cheap-module-eval-source-map',
+
 }
