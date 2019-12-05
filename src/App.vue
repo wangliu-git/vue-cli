@@ -1,6 +1,6 @@
 <template>
   <div>
-
+      <h1>{{title}}</h1>
   </div>
 </template>
 
@@ -8,6 +8,11 @@
 
 <script type="text/ecmascript-6">
   export default {
+    data() {
+      return {
+        title:'吃饭'
+      }
+    },
   }
 </script>
 
