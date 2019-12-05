@@ -1,18 +1,31 @@
 <template>
   <div>
       <h1>{{title}}</h1>
+      <!-- 引入的组件 -->
+      <Blogs/>
   </div>
 </template>
 
 
 
 <script type="text/ecmascript-6">
+// 引入组件挂载到App--显示到页面
+import Blogs from './components/Blogs'
+
   export default {
     data() {
       return {
         title:'吃饭'
       }
     },
+
+
+    // 注册引入的组件
+
+    components:{
+      Blogs
+    }
+    
   }
 </script>
 

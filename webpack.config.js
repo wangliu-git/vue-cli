@@ -44,7 +44,7 @@ module.exports = {
           // 配置CSS
           {
             test: /\.css$/,
-            use: ['style-loader', 'css-loader'],//从右向左执行的
+            use: ['vue-style-loader', 'css-loader'],//从右向左执行的
           },
 
           //处理图片
@@ -62,7 +62,7 @@ module.exports = {
           } ,
 
       
-          // 配置VUE
+          // 配置VUE单文件组件
           {
             test: /\.vue$/,
             include: path.resolve(__dirname, 'src'),

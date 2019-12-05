@@ -206,6 +206,8 @@ CommonJS:module.export  /exports  ///require  引入
 
     1). 下载依赖包:
         yarn add vue
+
+        <!-- 模板编译器 -->
         yarn add -D vue-loader vue-template-compiler
     
     2). 配置
