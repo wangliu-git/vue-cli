@@ -32,6 +32,42 @@ v-for="(item , index) in  items"   :key:"index"-遍历数组
 
 <!-- 模板里面访问的都是VM的属性 -->
 
+单文件组件
 App.vue{
     
 }
+script{
+    export default{
+        prop : []/{}---声明接收属性
+        data(){}
+        computed:{}
+        methods:{}
+        watch:{}
+        filters:{}
+        
+    }
+}
+
+
+
+
+1. 拆页面组件
+2. 实现静态组件
+3. 动态组件(初始化显示  交互  )
+4. 交互
+> 注意配置文件路径
+5. 拆页面
+6. 拆CSS 
+> 在页面引入基本基本css就不放在src下
+> 在index.js下引入css---就写在src里
+7. 在对应的组件下引入对应的css
+
+设计data--
+    类型: [{id : 1 , title  }]
+    位置: 如果许多组件都需要就放在共同的父组件里
+    名称: 
+
+
+
+
+

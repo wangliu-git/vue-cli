@@ -177,7 +177,7 @@ CommonJS:module.export  /exports  ///require  引入
           },
           module: {
             rules: [
-
+              
             ]
           },
           plugins: [
@@ -186,21 +186,29 @@ CommonJS:module.export  /exports  ///require  引入
           devServer: {
 
           },
-          devtool: ''
-        }
+          devtool: {
+          },
+          resolve : {
+
+          }
 
     3). 区分使用生产环境与开发环境
         使用生产环境:
             npm run build   ==> webpack
             1). 在内存中进行编译打包, 生成内存中的打包文件
-            2). 保存到本地(在本地生成打包文件)   ===> 此时还不能通过浏览器来访问, 需要启动服务器运行
+            2). 保存到本地(在本地生成打包文件)   ===> 此时还不能通过浏览器来访问, 需要手动启动服务器运行
         使用开发环境
             npm run dev   ==> webpack-dev-server
             1). 在内存中进行编译打包, 生成内存中的打包文件
-            2). 启动服务器, 运行内存中的打包文件   ===> 可以通过浏览器虚拟路径访问
+            2). 启动服务器, 运行内存中的打包文件(不生成本地打包文件)   ===> 可以通过浏览器虚拟路径访问
 
 
 ## 2. 搭建vue的环境
+
+
+
+
+
     0). 文档:
         https://vue-loader.vuejs.org/zh/
 
@@ -237,3 +245,13 @@ CommonJS:module.export  /exports  ///require  引入
     3). 编码: 
         src/App.vue
         src/index.js
+
+
+
+
+
+
+组件:
+1. 注册  写模板标签
+2. 在页面上渲染
+3. 父组件要引入
