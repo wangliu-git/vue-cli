@@ -40,7 +40,8 @@
           completed : false,
           }
 
-        // 调用更新函数来添加改变todos
+        // 调用更新函
+         数来添加改变todos
         this.addTodo(todo)
         
         // 清除输入

@@ -3,7 +3,8 @@
 <div class="todo-container">
   <div class="todo-wrap">
     <Header :addTodo='addTodo'/>
-    <List :todos='todos'/>
+    <!-- 通过List传给 Item -->
+    <List :todos='todos' :deleTodo='deleTodo'/>
     <!-- //传数据(让List接收数据--读的是组件对象的属性) -->
     <Footer />
   </div>
@@ -35,7 +36,11 @@ import Footer from "./components/footer";
     addTodo(todo){
       // 在列表前面添加--添加之后要传给Header-Header要接收
         this.todos.unshift(todo)
-          }
+     },
+
+    deleTodo(index){
+        this.todos.splice(index,1)
+    }
   },
 
 

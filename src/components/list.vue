@@ -1,6 +1,6 @@
 <template>
      <ul class="todo-main">
-       <Item v-for="(todo,index) in todos" :key='todo.id' :todo='todo'/>
+       <Item v-for="(todo,index) in todos" :key='todo.id' :todo='todo' :deleTodo='deleTodo' :index='index'/>
        <!-- //:todo='todo'--给item传数据 -->
     </ul>
 </template>
@@ -14,7 +14,8 @@ import  Item from "./item";
         return{}
       },
 
-      props: ['todos'],//声明接收属性[属性名]----组件就多了一个属性
+      props: ['todos', 'deleTodo'],
+      //声明接收属性[属性名]----组件就多了一个属性
       
       
       components:{
