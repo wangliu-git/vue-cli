@@ -11,7 +11,7 @@ import  Item from "./item";
   
   export default {
       data(){
-        
+        return{}
       },
 
       props: ['todos'],//声明接收属性[属性名]----组件就多了一个属性

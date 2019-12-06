@@ -13,9 +13,7 @@
 
 <script type="text/ecmascript-6">
   export default {
-      data(){
-        
-      },
+     
 
       // 声明接收属性--props可以传对象
           props: {

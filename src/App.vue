@@ -2,8 +2,9 @@
   
 <div class="todo-container">
   <div class="todo-wrap">
-    <Header />
-    <List :todos:'todos'/>//传数据(让List接收数据--读的是组件对象的属性)
+    <Header :addTodo='addTodo'/>
+    <List :todos='todos'/>
+    <!-- //传数据(让List接收数据--读的是组件对象的属性) -->
     <Footer />
   </div>
 </div>
@@ -29,12 +30,21 @@ import Footer from "./components/footer";
         ]
         }
     },
+  methods:{
+    // 添加todo--改变todos
+    addTodo(todo){
+      // 在列表前面添加--添加之后要传给Header-Header要接收
+        this.todos.unshift(todo)
+          }
+  },
 
-    components:{
-      Header,
-      List,
-      Footer
-    }
+
+
+  components:{
+    Header,
+    List,
+    Footer
+  }
     
   }
 </script>
