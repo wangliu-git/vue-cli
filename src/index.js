@@ -14,7 +14,7 @@
 
 
 import Vue from 'vue'  //找第三方模块的时候写模块名---
-
+import  "./css/index.css";//引入内部文件
 import App from './App.vue'//引入自定义组件---只是个配置--需注册才能用---需要相对路径
 
 // Vue.component('App',App)//注册全局组件(所有范围内都有效)--确定标签名======>方式一

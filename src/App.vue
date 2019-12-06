@@ -1,29 +1,33 @@
 <template>
-  <div>
-      <h1>{{title}}</h1>
-      <!-- 引入的组件 -->
-      <Blogs/>
+  
+<div class="todo-container">
+  <div class="todo-wrap">
+    <Header />
+    <List />
+    <Footer />
   </div>
+</div>
+
+
 </template>
 
 
 
 <script type="text/ecmascript-6">
-// 引入组件挂载到App--显示到页面
-import Blogs from './components/Blogs'
+
+import Header from "./components/header";
+import List from "./components/list";
+import Footer from "./components/footer";
 
   export default {//向外默认暴露配置对象
-    data() {
-      return {
-        title:'吃饭'
-      }
+    data(){
+
     },
 
-
-    // 注册引入的组件
-
     components:{
-      Blogs
+      Header,
+      List,
+      Footer
     }
     
   }
@@ -33,6 +37,15 @@ import Blogs from './components/Blogs'
 /* scoped: 限定当前组件的样式只对当前组件有效, 对外部和内部的其它组件无效 */
 
 <style scoped>
-
+    /*app*/
+  .todo-container {
+    width: 600px;
+    margin: 0 auto;
+  }
+  .todo-container .todo-wrap {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
  
 </style>

@@ -27,6 +27,9 @@ import Blogs from './components/Blogs'
     }
     
   }
+
+ 
+
 </script>
 
 
@@ -36,3 +39,5 @@ import Blogs from './components/Blogs'
 
  
 </style>
+
+
