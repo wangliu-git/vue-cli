@@ -3,7 +3,7 @@
 <div class="todo-container">
   <div class="todo-wrap">
     <Header />
-    <List />
+    <List :todos:'todos'/>//传数据(让List接收数据--读的是组件对象的属性)
     <Footer />
   </div>
 </div>
@@ -21,7 +21,13 @@ import Footer from "./components/footer";
 
   export default {//向外默认暴露配置对象
     data(){
-
+        return {
+          todos : [
+          {id : 1 , title :'aqqq', completed: false},//默认是否选中
+          {id : 3 , title :'assss', completed: true},
+          {id : 5 , title :'zxxx', completed: false},
+        ]
+        }
     },
 
     components:{

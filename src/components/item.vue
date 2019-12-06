@@ -2,17 +2,9 @@
   <div>
       <li>
         <label>
-          <input type="checkbox"/>
-          <span>xxxxx</span>
-        </label>
-        <button class="btn btn-danger" style="display:none">删除</button>
-      </li>
-
-      
-      <li>
-        <label>
-          <input type="checkbox"/>
-          <span>yyyy</span>
+          <input type="checkbox" v-model="todo.completed"/>
+          <!-- //v-model="todo.completed"---判断是否完成 -->
+          <span>{{todo.title}}</span>
         </label>
         <button class="btn btn-danger" style="display:none">删除</button>
       </li>
@@ -21,7 +13,16 @@
 
 <script type="text/ecmascript-6">
   export default {
-      
+      data(){
+        
+      },
+
+      // 声明接收属性--props可以传对象
+          props: {
+            //指定名称和类型
+            todo : Object,
+           
+          }
   }
 </script>
 

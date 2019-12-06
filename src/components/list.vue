@@ -1,6 +1,7 @@
 <template>
      <ul class="todo-main">
-       <Item />
+       <Item v-for="(todo,index) in todos" :key='todo.id' :todo='todo'/>
+       <!-- //:todo='todo'--给item传数据 -->
     </ul>
 </template>
 
@@ -10,9 +11,12 @@ import  Item from "./item";
   
   export default {
       data(){
-
+        
       },
 
+      props: ['todos'],//声明接收属性[属性名]----组件就多了一个属性
+      
+      
       components:{
         Item
       }
