@@ -247,11 +247,40 @@ CommonJS:module.export  /exports  ///require  引入
         src/index.js
 
 
-
-
-
-
 组件:
 1. 注册  写模板标签
 2. 在页面上渲染
 3. 父组件要引入
+
+
+
+
+##  解决开发环境ajax请求跨域问题
+    1). 利用webpack-dev-server进行请求代理转发
+        webpack-dev-server内部利用http-proxy-middle包对特定请求进行转发操作
+    2). 配置:
+        devServer: {
+          proxy: {
+            // 处理以/api开头路径的请求
+            // '/api': 'http://localhost:4000'
+            '/api': {
+              target: 'http://localhost:4000', // 转发的目标地址
+              pathRewrite: {
+                '^/api' : ''  // 转发请求时去除路径前面的/api
+              },
+              changeOrigin: true, // 支持跨域
+            }
+          }
+        }
+
+##  配置async/await的编译环境
+
+     1). 下载包
+        yarn add @babel/runtime-corejs2
+    2). 配置
+        presets: [
+          ['@babel/preset-env', {
+            useBuiltIns: 'usage',
+            'corejs': 2 // 处理一些新语法的实现
+          }]
+        ]

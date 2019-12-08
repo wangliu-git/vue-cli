@@ -25,7 +25,7 @@
     const token = PubSub.subscribe('add', (msg, data) => {
       console.log('add2()', data)
     })
-    console.log('token', token) // uid_1
+    console.log('token', token) // uid_1-标识
     PubSub.subscribe('delete', (msg, data) => {
       console.log('delete()', data)
     })
@@ -34,12 +34,31 @@
     // PubSub.unsubscribe(token)
     // PubSub.unsubscribe('add')
 
-    // PubSub.publish('add', 'atguigu')
-    PubSub.publishSync('add', 'atguigu')
+    PubSub.publish('add', 'atguigu')
+    // PubSub.publishSync('add', 'atguigu')
     console.log('publish()之后')
     PubSub.publish('delete', 'baidu')
 
+   
     
+    /*
+    同步:
+    token uid_add_2
+    add1() atguigu
+    add2() atguigu
+    publish()之后
+    delete() baidu
+    */
+  
+
+    /*
+    异步:
+    token uid_add_2
+    publish()之后
+    add1() atguigu
+    add2() atguigu
+    delete() baidu
+    */
   </script>
 </body>
 </html>

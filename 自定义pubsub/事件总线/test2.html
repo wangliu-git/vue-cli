@@ -15,6 +15,9 @@
       1). on(eventName, listener): 绑定事件监听
       2). emit(eventName, data): 分发事件
       3). off(eventName): 移除事件监听
+          1. 如果没有参数移除所有的
+          2.如果提供了事件,移除该事件的所有监听
+          3.如果提供了事件和回调,只移除这个回调的监听
     */
 
     eventBus.on('add', (data) => {

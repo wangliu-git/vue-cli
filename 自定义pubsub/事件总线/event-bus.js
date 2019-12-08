@@ -18,6 +18,7 @@
     let callbacks = callbackContainer[eventName]
     
     if (!callbacks) {
+      // 不需要返回token---用数组
       callbacks =[]
       callbackContainer[eventName] = callbacks
       
