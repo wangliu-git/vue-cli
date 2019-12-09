@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li>ID: {{id}}</li>
+    <li>ID: {{this.id}}</li>
     <li>Title: {{detail.title}}</li>
     <li>Content: {{detail.content}}</li>
   </ul>
@@ -32,17 +32,19 @@
       setTimeout(() => {
         // 得到当前id
         const id = this.id * 1
+        // 如果当前id等于id,就会返回一个的detial
         const detail = allMessageDetils.find(detail => detail.id===id)
         this.detail = detail
       }, 1000);
     },
 
      watch: {
+       //to  新的   from  旧的
       '$route' (to, from) { // 当请求参数发生改变时, 内部指定了新的$route属性
         // 对路由变化作出响应...
         setTimeout(() => {
           // 得到当前新的id
-          const id = this.id * 1
+          const id = to.params.id * 1
           const detail = allMessageDetils.find(detail => detail.id===id)
           this.detail = detail
         }, 1000);

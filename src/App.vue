@@ -20,7 +20,7 @@
           <div class="panel-body">
             <!-- 在些显示当前路由组件 -->
             <!-- 当前: 与请求的路径匹配的路由 -->
-            <router-view></router-view>
+             <router-view></router-view>
           </div>
         </div>
       </div>
