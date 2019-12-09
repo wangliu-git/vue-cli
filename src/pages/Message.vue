@@ -58,7 +58,7 @@
         // this.$router.replace(`/home/message/detail/${id}`)
         this.$router.replace({name: 'detail', params: {id}})
       },
-      // tfbn
+    
     }
   }
 </script>
