@@ -1,72 +1,38 @@
 <template>
-  
-<div class="todo-container">
-  <div class="todo-wrap">
-    <Header :addTodo='addTodo'/>
-    <!-- 通过List传给 Item -->
-    <List :todos='todos' :deleTodo='deleTodo'/>
-    <!-- //传数据(让List接收数据--读的是组件对象的属性) -->
-    <Footer />
+  <div>
+    <div class="row">
+      <div class="col-xs-offset-2 col-xs-8">
+        <div class="page-header">
+          <h2>Router Basic - 01</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2 col-xs-offset-2">
+        <div class="list-group">
+          <!-- 路由链接 -->
+          <router-link class="list-group-item" to="/about">About</router-link>
+          <router-link class="list-group-item" to="/home">Home</router-link>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="panel">
+          <div class="panel-body">
+            <!-- 在些显示当前路由组件 -->
+            <!-- 当前: 与请求的路径匹配的路由 -->
+            <router-view></router-view>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-
-
 </template>
 
-
-
 <script type="text/ecmascript-6">
-
-import Header from "./components/header";
-import List from "./components/list";
-import Footer from "./components/footer";
-
-  export default {//向外默认暴露配置对象
-    data(){
-        return {
-          todos : [
-          {id : 1 , title :'aqqq', completed: false},//默认是否选中
-          {id : 3 , title :'assss', completed: true},
-          {id : 5 , title :'zxxx', completed: false},
-        ]
-        }
-    },
-  methods:{
-    // 添加todo--改变todos
-    addTodo(todo){
-      // 在列表前面添加--添加之后要传给Header-Header要接收
-        this.todos.unshift(todo)
-     },
-
-    deleTodo(index){
-        this.todos.splice(index,1)
-    }
-  },
-
-
-
-  components:{
-    Header,
-    List,
-    Footer
-  }
-    
-  }
+  export default {}
 </script>
 
-
-/* scoped: 限定当前组件的样式只对当前组件有效, 对外部和内部的其它组件无效 */
-
 <style scoped>
-    /*app*/
-  .todo-container {
-    width: 600px;
-    margin: 0 auto;
-  }
-  .todo-container .todo-wrap {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
- 
+
+
 </style>
