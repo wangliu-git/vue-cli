@@ -27,19 +27,34 @@ module.exports = {
   module : {
         //loder的配置规则
       rules : [
-          
+          //处理 ES6 ===>  ES5
         //配置JS
-          {
-            test: /\.js$/,//匹配文件
-            exclude: /node_modules/,//排除文件\
-            include:[path.resolve(__dirname,'src')],//只针对哪些处理--写绝对路径--用path解析
-            use: {
-              loader: 'babel-loader',
-              options: {
-                presets: ['@babel/preset-env']//预设包--包含多个常用插件的工具
-              }
+        {
+          test: /\.js$/, // 用于匹配文件(对哪些文件进行处理)
+          // exclude: /node_modules/,
+          include: [path.resolve(__dirname, 'src')], // 只针对哪些处理
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['@babel/preset-env', {
+                  useBuiltIns: 'usage',
+                  'corejs': 2 // 处理一些新语法的实现
+                }]
+              ], // 预设包: 包含多个常用插件包的一个大包
+  
+              plugins: [
+                
+                ['component', {
+                  "libraryName": "mint-ui", // 针对mint-ui库实现按需引入打包
+                  "style": true // 自动打包对应的css
+                }]
+              ]
+              // Error: .plugins[0][1] must be an object, false, or undefined
             }
-          },
+          }
+        },
+   
 
           // 配置CSS
           {
@@ -84,8 +99,30 @@ module.exports = {
 
   //配置开发服务器
   devServer: {
+    port: 8081,
     open: true, // 自动打开浏览器
-    quiet: true, // 不做太多日志输出
+    // quiet: true, // 不做太多日志输出
+    proxy: {
+      // 处理以/api开头路径的请求
+      // '/api': 'http://localhost:4000'   // http://localhost:4000/api/search/users
+      '/api': {
+        target: 'http://localhost:4000', // 转发的目标地址
+        pathRewrite: {
+          '^/api' : ''  // 转发请求时去除路径前面的/api
+        },
+      },
+
+      '/gh': {
+        target: 'https://api.github.com', // 转发的目标地址
+        pathRewrite: {
+          '^/gh' : ''  // 转发请求时去除路径前面的/api
+        },
+        changeOrigin: true, // 支持跨域, 如果协议/主机也不相同, 必须加上
+      }
+    },
+
+    historyApiFallback: true, // 任意的 404 响应都被替代为 index.html
+  
   },
 
   // 引入模块的解析
@@ -93,6 +130,9 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'], // 可以省略的后缀名
     alias: { // 路径别名(简写方式)
       'vue$': 'vue/dist/vue.esm.js',  // 表示精准匹配
+      '@': path.resolve(__dirname, 'src'),
+      '@components': path.resolve(__dirname, 'src/components'),
+ 
     }
   },
 
