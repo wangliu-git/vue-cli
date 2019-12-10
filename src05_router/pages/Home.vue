@@ -4,6 +4,7 @@
     <ul class="nav nav-tabs">
       <li>
         <!-- <router-link :to="/home/news">News</router-link> -->
+        <!-- name: 'news'    命名路由 -->
         <router-link :to="{name: 'news'}">News</router-link>
       </li>
       <li>

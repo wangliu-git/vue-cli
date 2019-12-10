@@ -13,6 +13,7 @@ import MessageDetail from "@/pages/MessageDetail";
 Vue.use(VueRouter)
 
 export default new VueRouter({
+  mode:"history",   //去掉路由路径中的#
   //应用中所有路由
   routes:[
     //配置路由
@@ -26,7 +27,7 @@ export default new VueRouter({
       children:[
         // 注册子路由
         {
-          name:"news",
+          name:"news",  //起名字--代替path
           path:"/home/news",
           component:News
         },
@@ -38,7 +39,10 @@ export default new VueRouter({
             {
               name:"detail",
               path :"/home/news/message/detail/:id",  //动态路由
-              component :MessageDetail
+              component :MessageDetail,
+              // props:true,//内部自动将接受的params参数以标签的属性传入路由组件
+              //函数写法-更灵活--query参数必须用这种方式
+              props:(route) => ({ id: route.params.id })//函数返回的对象中的所有属性都会以标签的属性传入路由组件
             }
           ]
         },

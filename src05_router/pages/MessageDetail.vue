@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li>ID: {{this.id}}</li>
+    <li>ID: {{this.$route.params.id}}</li>
     <li>Title: {{detail.title}}</li>
     <li>Content: {{detail.content}}</li>
   </ul>
@@ -31,7 +31,7 @@
       console.log('Detail mounted()')
       setTimeout(() => {
         // 得到当前id
-        const id = this.id * 1
+        const id = this.$route.params.id * 1
         // 如果当前id等于id,就会返回一个的detial
         const detail = allMessageDetils.find(detail => detail.id===id)
         this.detail = detail
@@ -44,7 +44,7 @@
         // 对路由变化作出响应...
         setTimeout(() => {
           // 得到当前新的id
-          const id = to.params.id * 1
+          const id = to.$route.params.id * 1
           const detail = allMessageDetils.find(detail => detail.id===id)
           this.detail = detail
         }, 1000);

@@ -1,3 +1,5 @@
+
+
 ## PubSub的语法:
     1. token subscribe(msgName, callback): 订阅消息, 并返回一个标识token  ===> 绑定事件监听
     2. publish(msgName, data): 异步发布消息  ==>   分发事件
