@@ -8,19 +8,23 @@
 
 <div id="test"></div>
 
-<script src="./js/vue.js"></script>
+<script type="text/javascript" src="./js/mvvm/compile.js"></script>
+<script type="text/javascript" src="./js/mvvm/mvvm.js"></script>
+<script type="text/javascript" src="./js/mvvm/observer.js"></script>
+<script type="text/javascript" src="./js/mvvm/watcher.js"></script>
 <script>
-  const vm = new Vue({
+  const vm = new MVVM({
     data: {
       name: 'tom'
     }
   })
-  console.log(vm)
+  console.log(vm)  
+  
 
-  console.log(vm.name) // tom  代理读
+  console.log(vm.name) // Name本身没有tom   利用get tom  代理读
 
-  vm.name = 'jack' // 代理写
-  console.log(vm._data.name) // jack
+  vm.name = 'jack' // 代理写(数据存的data里)
+  console.log(vm._data.name) // jack  VM本身具有的属性_data
 
 </script>
 </body>
